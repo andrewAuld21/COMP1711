@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+//Program to calculate the area of a circle given the radius
+
 int main(){
 
     float radius;

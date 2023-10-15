@@ -89,18 +89,45 @@
    89  git add -A
    90  git commit -m "Saves notes"
    91  git push
-   92  gcc ws_1_exercise_3.c -o ws_1_exercise_3
-   93  cd Week_2_folder/
-   94  gcc ws_1_exercise_3.c -o ws_1_exercise_3
-   95  rm ws_1_exercise_3.c
-   96  touch ws_1_exercise_4.c
-   97  gcc ws_1_exercise_4.c -o ws_1_exercise_4
-   98  ./ws_1_exercise_4
-   99  gcc ws_1_exercise_4.c -o ws_1_exercise_4
-  100  ./ ws_1_exercise_4
-  101  ./ws_1_exercise_4
-  102  gcc ws_1_exercise_4.c -o ws_1_exercise_4
-  103  ./ws_1_exercise_4
-  104  gcc ws_1_exercise_4.c -o ws_1_exercise_4
-  105  ./ws_1_exercise_4
-  106  history > notes.md
+   92  cd Week_2_folder/
+   93  touch ws_1_exercise_6.c
+   94  gcc ws_1_exercise_6.c -o ws_1_exercise_6
+   95  ./ws_1_exercise_6
+   96  touch tryout
+   97  rm tryout
+   98  touch tryout.c
+   99  gcc tryout.c -o tryout
+  100  ./tryout
+  101  gcc tryout.c -o tryout
+  102  ./tryout
+  103  gcc tryout.c -o tryout
+  104  ./tryout
+  105  gcc ws_1_exercise_6.c -o ws_1_exercise_6
+  106  ./ws_1_exercise_6
+  107  gcc ws_1_exercise_6.c -o ws_1_exercise_6
+  108  ./ws_1_exercise_6
+  109  gcc ws_1_exercise_6.c -o ws_1_exercise_6
+  110  ./ws_1_exercise_6
+  111  gcc ws_1_exercise_6.c -o ws_1_exercise_6
+  112  ./ws_1_exercise_6
+  113  touch ws_1_exercise_7.c
+  114  gcc ws_1_exercise_6.c -o ws_1_exercise_6
+  115  ./ws_1_exercise_6
+  116  gcc ws_1_exercise_6.c -o ws_1_exercise_6
+  117  gcc ws_1_exercise_7.c -o ws_1_exercise_7
+  118  ./ ws_1_exercise_7
+  119  ./ws_1_exercise_7
+  120  gcc ws_1_exercise_7.c -o ws_1_exercise_7
+  121  ./ws_1_exercise_7
+  122  gcc ws_1_exercise_7.c -o ws_1_exercise_7
+  123  ./ws_1_exercise_7
+  124  gcc ws_1_exercise_4.c -o ws_1_exercise_4
+  125  gcc ws_1_exercise_7.c -o ws_1_exercise_7
+  126  gcc ws_1_exercise_6.c -o ws_1_exercise_6
+  127  touch ws_1_exercise_9.c
+  128  touch ws_1_exercise_3.c
+  129  rm ws_1_exercise_3.c
+  130  gcc ws_1_exercise_9.c -o ws_1_exercise_9
+  131  ./ws_1_exercise_9
+  132  git add --all
+  133  history > notes.md

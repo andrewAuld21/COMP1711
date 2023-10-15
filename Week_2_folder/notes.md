@@ -86,3 +86,21 @@
    86  git push
    87  history > Week_2_folder/notes.md
    88  history > notes.md
+   89  git add -A
+   90  git commit -m "Saves notes"
+   91  git push
+   92  gcc ws_1_exercise_3.c -o ws_1_exercise_3
+   93  cd Week_2_folder/
+   94  gcc ws_1_exercise_3.c -o ws_1_exercise_3
+   95  rm ws_1_exercise_3.c
+   96  touch ws_1_exercise_4.c
+   97  gcc ws_1_exercise_4.c -o ws_1_exercise_4
+   98  ./ws_1_exercise_4
+   99  gcc ws_1_exercise_4.c -o ws_1_exercise_4
+  100  ./ ws_1_exercise_4
+  101  ./ws_1_exercise_4
+  102  gcc ws_1_exercise_4.c -o ws_1_exercise_4
+  103  ./ws_1_exercise_4
+  104  gcc ws_1_exercise_4.c -o ws_1_exercise_4
+  105  ./ws_1_exercise_4
+  106  history > notes.md

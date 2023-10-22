@@ -1,16 +1,32 @@
 #include <stdio.h>
 
+//Program to tell whether a number is positive, negative or zero
+
 int main(){
 
-    int numero;
-    int answer;
+    int num1;
 
     printf("Enter your number: ");
-    scanf("%i", &numero);
+    scanf("%d", &num1);
 
-    answer = numero % 2;
+    switch(num1){
 
-    printf("The answer is %i\n", answer);
+        case 0:    while (num1 < 0){
+            printf("Your number is negative.");
+        }
+        break;
 
-    return 0;
+        case 1:     while (num1 = 0){
+                    printf("Your number is zero.");
+        }
+        break;
+
+        case 2:    while (num1 > 0){
+            printf("Your number is positive.");
+        }
+        break;
+
+        default:    printf("Your number is invalid for this program");
+
+    }
 }

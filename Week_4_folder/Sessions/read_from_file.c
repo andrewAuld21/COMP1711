@@ -20,6 +20,7 @@ int main() {
     int number_of_lines = 0;
 
     //"while there is still data in the file" basically (fgets reads in the line)
+    // here the syntax is 'fgets(array/string where you will store the line, amount of characters, from where)
     while (fgets(line_buffer, buffer_size, file) != NULL) {
         //going to take whatever is in data.txt and convert it(atoi) into a number since it is originally a string
         printf("%d\n", atoi(line_buffer));

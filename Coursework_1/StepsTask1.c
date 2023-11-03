@@ -63,8 +63,6 @@ int main() {
 
     while(fgets(line_storage_array, buffer_size, file) != NULL){
 
-        count++;
-
         tokeniseRecord(line_storage_array, ",", date, time, steps);
 
         strcpy(file_info[count].date, date);
@@ -75,13 +73,15 @@ int main() {
 
         file_info[count].steps = steps_as_int;
 
+        count++;
+
     }
 
     printf("Number of records in file: %i\n", count);
     
     int item;
 
-    for(item = 0; item < 4; item++){
+    for(item = 0; item < 3; item++){
 
             printf("%s/", file_info[item].date);
             printf("%s/", file_info[item].time);

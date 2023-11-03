@@ -48,27 +48,46 @@ int main() {
     char* filename = "FitnessData_2023.csv";
     FILE *file = fopen(filename, "r");
     if (file == NULL) {
-        printf("Could not open file\n");
+        printf("Error opening file\n");
         return 1;
     }
 
     int count = 0;
     int buffer_size = 100;
     char line_storage_array[buffer_size];
+    
+    FITNESS_DATA file_info[100];
+    char date[11];
+    char time[6];
+    char steps[100];
 
     while(fgets(line_storage_array, buffer_size, file) != NULL){
-        count += 1;
+
+        count++;
+
+        tokeniseRecord(line_storage_array, ",", date, time, steps);
+
+        strcpy(file_info[count].date, date);
+        strcpy(file_info[count].time, time);
+
+        int steps_as_int;
+        steps_as_int = atoi(steps);
+
+        file_info[count].steps = steps_as_int;
+
     }
 
     printf("Number of records in file: %i\n", count);
-
-    // First, separate the string by the commas, using the tokenizeRecord function.
-    // create another array
-    // for loop that starts at 0 and is under 3, i++. Inside the for loop use printf() and assign a new variable name to the
-    // typedef struct FITNESS DATA
-    // tokenize record has to be in the whileloop for it to go line by line
-    // 
     
+    int item;
+
+    for(item = 0; item < 4; item++){
+
+            printf("%s/", file_info[item].date);
+            printf("%s/", file_info[item].time);
+            printf("%i\n", file_info[item].steps);
+            
+    }
 
    fclose(file);
    return 0;

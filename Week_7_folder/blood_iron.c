@@ -15,6 +15,7 @@ int main()
     // and then takes the actual string out of it
     // this removes any spaces or newlines.
     fgets(line, buffer_size, stdin);
+    // scans 'line' and reads it in format 'string (%s)' and stores it in 'filename'
     sscanf(line, " %s ", filename);
 
     char choice;
@@ -41,7 +42,6 @@ int main()
 
         // get the next character typed in and store in the 'choice'
         choice = getchar();
-
         // this gets rid of the newline character which the user will enter
         // as otherwise this will stay in the stdin and be read next time
         while (getchar() != '\n');

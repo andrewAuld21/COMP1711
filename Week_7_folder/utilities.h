@@ -62,7 +62,12 @@ void tokeniseRecord(const char *input, const char *delimiter,
  */
 FILE *open_file(char *filename, char *mode)
 {
-    // to do
+    FILE *input = fopen(filename, "r");
+        if (!input)
+        {
+            printf("Error: File could not be opened\n");
+            return 1;
+        }
 }
 
 /**

@@ -1,5 +1,6 @@
 #include "utilities.h"
 
+// New code below:
 int main()
 {
     // array of daily readings
@@ -120,4 +121,78 @@ int main()
             break;
         }
     }
+}
+
+
+
+
+// New code below:
+#include <stdio.h>
+
+int isPrime(int num){
+
+    if (num < 2){
+        return 0;
+    }
+    
+    for (int i = 2; i < num; i++){
+        if (num % i == 0){
+            return 0;
+        }
+    }
+
+    return 1;
+    
+}
+
+int main(){
+
+    int input_num;
+
+    printf("Please enter a number: ");
+    scanf("%i", &input_num);
+
+    if(isPrime(input_num)){
+        printf("%i is not a prime number.\n", input_num);
+    }
+    else{
+        printf("%i is a prime number.\n", input_num);
+    }
+
+    return 0;
+
+}
+
+
+
+// New code below:
+#include <stdio.h>
+
+int concatStrings(char string1[], const char string2[]){
+    int i = 0;
+    int j = 0;
+
+    while (string1[i] != "\0"){
+        i++;
+    }
+
+    while (string2[j] != "\0"){
+        string1[i] = string2[j];
+        i++;
+        j++;
+    }
+
+    string1[i] = "\0";
+}
+
+int main(){
+    char string1[500] = "Hello ";
+    const char string2[] = "everybody!";
+
+    concatStrings(string1, string2);
+
+    printf("The concatenated string is: %s\n", string1);
+
+    return 0;
+
 }

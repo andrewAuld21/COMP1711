@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-//Write a program to check if a studenthas passed, failed, or achieved a distinction based on an input mark 
+//Write a program to check if a student has passed, failed, or achieved a distinction based on an input mark 
 //(passmark is 50, distinction is 70)
 
 int main(){

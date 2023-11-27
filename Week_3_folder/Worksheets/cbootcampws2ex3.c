@@ -1,20 +1,21 @@
 #include <stdio.h>
 
-int str_len(char string1){
+int str_len(char *string1){
 
-    char *arr;
-    int i;
     int length = 0;
-
-    printf("Enter a string: ");
-    scanf("%i", *arr);
-
-    for(i = 0; arr[i] != "\0"; i++)
-    {
+    
+    while(*string1 != "\0"){
         length++;
+        string1++;
     }
 
-    printf("The length of the string is %d characters!", length);
+    return length;
+}
+
+int main(){
+
+    int length = str_len("Hello World!");
+    printf("The length of the string is %i\n", length);
 
     return 0;
 }

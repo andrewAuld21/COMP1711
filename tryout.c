@@ -196,3 +196,53 @@ int main(){
     return 0;
 
 }
+
+
+
+
+// Code from Week 4 Worksheet 1 Gold Exercise here:
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(){
+    char* filename = "numbers.dat";
+    FILE *file = fopen(filename, "a+");
+    if(file == NULL){
+        printf("Error opening file\n");
+        return 1;
+    }
+
+    float input_float;
+    char input_float_string[100];
+
+    printf("Enter the float you wish to append to the file (or enter a non-numeric value to stop): ");
+    if(scanf("%s", input_float_string) != "%s"){
+        while(scanf("%s", input_float_string) == 1){
+        fprintf(file, "%s", input_float_string);
+        printf("Enter an additional float you wish to append to the file (or enter a non-numeric value to stop): ");
+        }
+    }
+
+    fseek(file, 0, SEEK_SET);
+
+    float sum = 0.0;
+    int count;
+
+    while(fscanf(file, "%s", input_float_string) == 1){
+        input_float = atof(input_float_string);
+        sum += input_float;
+        count++;
+    }
+
+    float average = sum / count;
+
+    fprintf(file, "The average of the floats in the file is: %f\n", average);
+
+    fclose(file);
+
+    return 0;
+    
+}
+
+

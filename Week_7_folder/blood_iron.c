@@ -2,10 +2,13 @@
 
 int main()
 {
-    // array of daily readings
+    // array of reading structs called daily readings
     reading daily_readings[100];
 
+    // this array will hold each line as it is read in from the file, initialized to the size of buffer size (100)
     char line[buffer_size];
+
+    // this array will store the name of the file, initialized to the size of buffer size (100)
     char filename[buffer_size];
 
     // get filename from the user
@@ -14,8 +17,9 @@ int main()
     // these lines read in a line from the stdin (where the user types)
     // and then takes the actual string out of it
     // this removes any spaces or newlines.
+    // this line basically gets whatever is in the stdinput, gives it size buffer_size, and stores it in array 'line'
     fgets(line, buffer_size, stdin);
-    // scans 'line' and reads it in format 'string (%s)' and stores it in 'filename'
+    // stringscanf (sscanf) gets whatever is in 'line', makes sure it is in string format, and stores it in 'filename'
     sscanf(line, " %s ", filename);
 
     char choice;
@@ -42,6 +46,7 @@ int main()
 
         // get the next character typed in and store in the 'choice'
         choice = getchar();
+
         // this gets rid of the newline character which the user will enter
         // as otherwise this will stay in the stdin and be read next time
         while (getchar() != '\n');

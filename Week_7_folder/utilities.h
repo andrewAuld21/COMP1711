@@ -26,6 +26,9 @@ typedef struct
  * @param date the place where the date will be stored
  * @param bloodIron the place where the bloodIron will be stored.
  */
+
+// 'input' and 'delimiter' are declared as 'const char' because they should remain constant
+// and not be changed throughout the program
 void tokeniseRecord(const char *input, const char *delimiter,
                     char *date, float *bloodIron)
 {
@@ -62,12 +65,7 @@ void tokeniseRecord(const char *input, const char *delimiter,
  */
 FILE *open_file(char *filename, char *mode)
 {
-    FILE *input = fopen(filename, "r");
-        if (!input)
-        {
-            printf("Error: File could not be opened\n");
-            return 1;
-        }
+    // to do
 }
 
 /**
@@ -77,7 +75,6 @@ FILE *open_file(char *filename, char *mode)
  * @param dataArray the array of readings
  * @return int Returns the number of readings from the file
  */
-
 int read_file(FILE *inputFile, reading *dataArray)
 {
     // to do

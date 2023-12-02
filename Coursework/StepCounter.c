@@ -50,8 +50,10 @@ int main() {
    char option;
    int counter = 0;
    float mean = 0;
+   int least_steps;
+   int most_steps;
 
-   FITNESS_DATA file_info[100];
+   FITNESS_DATA file_info[1000];
 
    char date[11];
    char time[6];
@@ -110,7 +112,40 @@ int main() {
         
         case 'C':
         case 'c':
+            counter = 0;
+            least_steps = 10000;
+            while(fgets(line_storage_array, buffer_size, input)){
+                tokeniseRecord(line_storage_array, ",", file_info[counter].date, file_info[counter].time, &file_info[counter].steps);
+                if(file_info[counter].steps < least_steps){
+                    least_steps = file_info[counter].steps;
+                }
+
+                counter++;
+
+            }
+
+            printf("Fewest steps: %s %s", file_info[counter].date, file_info[counter].time);
+
+            fclose(input);
+            break;
+        
+        case 'D':
+        case 'd':
+            return 0;
+            break;
+        
+        case 'E':
+        case 'e':
+            counter = 0;
+            while(fgets(line_storage_array, buffer_size, input)){
+                tokeniseRecord(line_storage_array, ",", file_info[counter].date, file_info[counter].time, file_info[counter].steps);
+                mean += file_info[counter].steps;
+                counter++;
+            }
             
+            mean /= counter;
+            printf("Mean step count: %.0f", mean);
+            fclose(input);
             break;
 
         case 'Q':

@@ -143,3 +143,22 @@ int main()
         }
     }
 }
+
+
+
+// Alternative version of case C in StepCounter.c
+if(counter > 0){
+                least_steps = file_info[0].steps;
+                int something = 0;
+
+                for(int index = 0; index < counter; index++){
+                 if(file_info[index].steps < least_steps){
+                       least_steps = file_info[index].steps;
+                      int something = index;
+                    }                
+                }
+                
+
+            printf("Fewest steps: %s %s\n", file_info[something].date, file_info[something].time);
+
+            break;

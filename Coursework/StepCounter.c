@@ -48,10 +48,13 @@ int main() {
    char line_storage_array[buffer_size];
 
    char option;
+   int number_of_records;
    int counter = 0;
    float mean = 0;
    int least_steps;
    int most_steps;
+   int min_steps_index;
+   int most_steps_index;
 
    FITNESS_DATA file_info[1000];
 
@@ -59,105 +62,112 @@ int main() {
    char time[6];
    char steps[100];
 
-   while(1){
+   while(1)
+   {
 
-    printf("Menu Options:\n");
-    printf("A: Specify the filename to be imported\n");
-    printf("B: Display the total number of records in the file\n");
-    printf("C: Find the date and time of the timeslot with the fewest steps\n");
-    printf("D: Find the date and time of the timeslot with the largest number of steps\n");
-    printf("E: Find the mean step count of all records in the file\n");
-    printf("F: Find the longest continuous period where the step count is above 500 steps\n");
-    printf("Q: Quit\n");
-    printf("Enter choice: ");
+        printf("Menu Options:\n");
+        printf("A: Specify the filename to be imported\n");
+        printf("B: Display the total number of records in the file\n");
+        printf("C: Find the date and time of the timeslot with the fewest steps\n");
+        printf("D: Find the date and time of the timeslot with the largest number of steps\n");
+        printf("E: Find the mean step count of all records in the file\n");
+        printf("F: Find the longest continuous period where the step count is above 500 steps\n");
+        printf("Q: Quit\n");
+        printf("Enter choice: ");
 
-    option = getchar();
+        option = getchar();
 
-    while(getchar() != '\n');
+        while(getchar() != '\n');
 
-    switch(option)
-    {
-        case 'A':
-        case 'a':
+        switch(option)
+        {
+            case 'A':
+            case 'a':
 
-            printf("Input filename: ");
-            fgets(line_storage_array, buffer_size, stdin);
-            sscanf(line_storage_array, "%s", filename);
+                printf("Input filename: ");
+                fgets(line_storage_array, buffer_size, stdin);
+                sscanf(line_storage_array, "%s", filename);
 
-            FILE *input = fopen(filename, "r");
-            if (!input){
-                printf("Error: could not find or open file.\n");
-                return 1;
-            }
-
-            while (fgets(line_storage_array, buffer_size, input) != NULL){
-                tokeniseRecord(line_storage_array, ",", date, time, steps);
-                strcpy(file_info[counter].date, date);
-                strcpy(file_info[counter].time, time);
-                int steps_as_int;
-                steps_as_int = atoi(steps);
-                file_info[counter].steps = steps_as_int;
-                counter++;
-            }
-
-            printf("File successfully loaded.\n");
-
-            break;
-        
-        case 'B':
-        case 'b':
-            printf("Total records: %i\n", counter);
-            fclose(input);
-            break;
-        
-        case 'C':
-        case 'c':
-            counter = 0;
-            least_steps = 10000;
-            while(fgets(line_storage_array, buffer_size, input)){
-                tokeniseRecord(line_storage_array, ",", file_info[counter].date, file_info[counter].time, &file_info[counter].steps);
-                if(file_info[counter].steps < least_steps){
-                    least_steps = file_info[counter].steps;
+                FILE *input = fopen(filename, "r");
+                if (!input)
+                {
+                    printf("Error: could not find or open file.\n");
+                    return 1;
                 }
 
-                counter++;
+                while (fgets(line_storage_array, buffer_size, input) != NULL)
+                {
+                    tokeniseRecord(line_storage_array, ",", date, time, steps);
+                    strcpy(file_info[counter].date, date);
+                    strcpy(file_info[counter].time, time);
+                    int steps_as_int;
+                    steps_as_int = atoi(steps);
+                    file_info[counter].steps = steps_as_int;
+                    counter++;
+                }
 
-            }
+                number_of_records = counter;
 
-            printf("Fewest steps: %s %s", file_info[counter].date, file_info[counter].time);
+                printf("File successfully loaded.\n");
 
-            fclose(input);
-            break;
+                break;
         
-        case 'D':
-        case 'd':
-            return 0;
-            break;
+            case 'B':
+            case 'b':
+                printf("Total records: %i\n", number_of_records);
+                break;
         
-        case 'E':
-        case 'e':
-            counter = 0;
-            while(fgets(line_storage_array, buffer_size, input)){
-                tokeniseRecord(line_storage_array, ",", file_info[counter].date, file_info[counter].time, file_info[counter].steps);
-                mean += file_info[counter].steps;
-                counter++;
-            }
+            case 'C':
+            case 'c': 
+
+                least_steps = 10000;
+                for(int i = 0; i < number_of_records; i++){
+                    if(file_info[i].steps < least_steps)
+                    {
+                        least_steps = file_info[i].steps;
+                        min_steps_index = i;
+
+                    }
             
-            mean /= counter;
-            printf("Mean step count: %.0f", mean);
-            fclose(input);
-            break;
+                }
 
-        case 'Q':
-        case 'q':
-            return 0;
-            break;
+                printf("Fewest steps: %s %s\n", file_info[min_steps_index].date, file_info[min_steps_index].time);
+
+                break;
         
-        default:
-            printf("Invalid choice. Try again\n");
-            break;
-    }
+            case 'D':
+            case 'd':
+
+                most_steps = 0;
+                for(int i = 0; i < number_of_records; i++){
+                    if(file_info[i].steps > most_steps)
+                    {
+                        most_steps = file_info[i].steps;
+                        most_steps_index = i;
+                    }
+
+                }
+
+                printf("Largest steps: %s %s\n", file_info[most_steps_index].date, file_info[most_steps_index].time);
+
+                break;
+        
+            case 'E':
+            case 'e':
+                return 0;
+                break;
+
+            case 'Q':
+            case 'q':
+                return 0;
+                break;
+        
+            default:
+                printf("Invalid choice. Try again\n");
+                break;
+        
+
+        }
 
     }
-
 }

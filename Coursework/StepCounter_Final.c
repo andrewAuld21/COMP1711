@@ -55,6 +55,11 @@ int main() {
    int most_steps;
    int min_steps_index;
    int most_steps_index;
+   int current_start_index;
+   int current_period_length;
+   int longest_start_index;
+   int longest_period_length;
+   
 
    FITNESS_DATA file_info[1000];
 
@@ -154,7 +159,44 @@ int main() {
         
             case 'E':
             case 'e':
-                return 0;
+                
+                for(int i = 0; i < number_of_records; i++)
+                {
+                    mean += file_info[i].steps;
+                }
+
+                mean /= counter;
+                printf("Mean step count: %.0f\n", mean);
+                break;
+            
+            case 'F':
+            case 'f':
+                for(int i = 0; i < number_of_records; i++)
+                {
+                    if(file_info[i].steps > 500)
+                    {
+                        if(current_period_length == 0)
+                        {
+                            current_start_index = i;
+                        }
+
+                        current_period_length++;
+
+                    }else{
+                        if(current_period_length > longest_period_length)
+                        {
+                            longest_period_length = current_period_length;
+                            longest_start_index = current_start_index;
+                        }
+
+                        current_period_length = 0;
+
+                    }
+                }     
+                
+                printf("Longest period start: %s %s\n", file_info[longest_start_index].date, file_info[longest_start_index].time);
+                printf("Longest period end: %s %s\n", file_info[longest_start_index + longest_period_length].date, file_info[longest_start_index + longest_period_length].time);
+
                 break;
 
             case 'Q':
@@ -166,7 +208,6 @@ int main() {
                 printf("Invalid choice. Try again\n");
                 break;
         
-
         }
 
     }

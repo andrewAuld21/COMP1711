@@ -85,6 +85,14 @@ int main() {
     while (fgets(line_storage_array, buffer_size, input) != NULL)
     {
         tokeniseRecord(line_storage_array, ",", date, time, steps);
+        // I based this line of a discussion with ChatGPT
+        // Prompt: How can I check for invalid data in a file?
+        if (sscanf(line_storage_array, "%[^,],%[^,],%s", date, time, steps) != 3) {
+            // Print an error message for invalid data
+            printf("Error: the file contains invalid data.\n");
+            fclose(input);
+            return 1;
+        }
         strcpy(file_info[counter].date, date);
         strcpy(file_info[counter].time, time);
         file_info[counter].steps = atoi(steps);
